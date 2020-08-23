@@ -20,7 +20,8 @@ class getYoutubeVideos extends Controller
 	{
 		$string = strip_tags($string);
 		$string = addslashes($string);
-		return filter_var($string, FILTER_SANITIZE_STRING);
+		//return filter_var($string, FILTER_SANITIZE_STRING);
+        return $string;
 	}
 }
 
