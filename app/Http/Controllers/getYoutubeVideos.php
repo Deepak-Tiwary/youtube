@@ -9,10 +9,10 @@ class getYoutubeVideos extends Controller
     
 	public function search_results(Request $request)
 	{
-		$base_url_prefix = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&q=";
-		$search_val = $this->sanitize_string($request->search);
-		$base_url_postfix = "&type=video&key=AIzaSyDbwf-g7rDrTAQEixOHMcA_2AW10L2VS6A";
-		$json = file_get_contents($base_url_prefix.$search_val.$base_url_postfix);
+		$key = "AIzaSyA54gNx4uQjjkoDQrS7sKX7vyyN9nVHUNc";
+		$search_val = $this->sanitize_string(str_replace(' ', '%20', $request->search));
+		$base_url = "https://www.googleapis.com/youtube/v3/search?resource=videos&method=list&maxResults=8&key=".$key."&q=".$search_val;
+		$json = file_get_contents($base_url);
 		return response()->json($json);
 	}
 	
@@ -23,3 +23,8 @@ class getYoutubeVideos extends Controller
 		return filter_var($string, FILTER_SANITIZE_STRING);
 	}
 }
+
+//https://www.googleapis.com/youtube/v3/search?resource=videos&method=list&maxResults=8&q=test&type=video&key=AIzaSyA54gNx4uQjjkoDQrS7sKX7vyyN9nVHUNc
+
+
+
