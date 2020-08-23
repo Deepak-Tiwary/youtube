@@ -24,7 +24,4 @@ class getYoutubeVideos extends Controller
 	}
 }
 
-//https://www.googleapis.com/youtube/v3/search?resource=videos&method=list&maxResults=8&q=test&type=video&key=AIzaSyA54gNx4uQjjkoDQrS7sKX7vyyN9nVHUNc
-
-
 
