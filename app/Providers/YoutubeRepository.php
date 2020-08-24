@@ -7,7 +7,7 @@ use App\Providers\YoutubeRepositoryInterface;
 class YoutubeRepository implements YoutubeRepositoryInterface
 {
 
-    private $_MAX_RESULTS = 12; // Default number of results
+    private $_MAX_RESULTS = 8; // Default number of results
     private $_baseUrl;
     private $_apiKey;
 
