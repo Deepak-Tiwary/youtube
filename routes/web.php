@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('tubeSearch');
 });
-Route::post('/search', 'getYoutubeVideos@search_results');
+Route::post('/search', 'getYoutubeVideos@getYoutubeByClass');//search_results
