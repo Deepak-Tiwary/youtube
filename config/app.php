@@ -122,6 +122,10 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
+    
+    'youtube_api_key' => env('AIzaSyA54gNx4uQjjkoDQrS7sKX7vyyN9nVHUNc'),
+
+    'youtube_url' => env('https://www.googleapis.com/youtube/v3'),
 
     /*
     |--------------------------------------------------------------------------
