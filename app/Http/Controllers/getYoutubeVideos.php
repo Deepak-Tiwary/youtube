@@ -3,12 +3,14 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Providers\YoutubeRepositoryInterface;
+use App\Providers\ClassBasedYoutube;
 
 
 class getYoutubeVideos extends Controller
 {
-    
+	
+	
+    //Function Based
 	public function search_results(Request $request)
 	{
 		$key = "AIzaSyA54gNx4uQjjkoDQrS7sKX7vyyN9nVHUNc";
@@ -18,10 +20,12 @@ class getYoutubeVideos extends Controller
 		return response()->json($json);
 	}
     
-     
-    public function getYoutubeByClass(YoutubeRepositoryInterface $youtubeRepository) 
+    // library installation - External Class Based
+    public function getYoutubeByClass(Request $request) 
     {
-        $data = $youtubeRepository->search(request()->only(['query', 'pageToken']));
+		$search_val = $this->sanitize_string(str_replace(' ', '%20', $request->search));
+		$obj_ClassBasedYoutube = new ClassBasedYoutube();
+		$data = $obj_ClassBasedYoutube->getYoutubeByClass($search_val);
         return response()->json($data);
     }
 	
