@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Providers;
 
-use App\Repositories\Interfaces\YoutubeRepositoryInterface;
+use App\Providers\YoutubeRepositoryInterface;
 
 class YoutubeRepository implements YoutubeRepositoryInterface
 {
@@ -11,24 +11,12 @@ class YoutubeRepository implements YoutubeRepositoryInterface
     private $_baseUrl;
     private $_apiKey;
 
-    /**
-     * Constructor
-     * Set base url and api key
-     */
     public function __construct()
     {
         $this->_baseUrl = config('app.youtube_url');
         $this->_apiKey = config('app.youtube_api_key');
     }
-
-    /**
-     * Search youtube API
-     * Returns a list of youtube videos and channels
-     *
-     * @param array $data contains request payload [keyword, pageToken]
-     * 
-     * @return array
-     */
+    
     public function search($data)
     {
         $requestUrl = "{$this->_baseUrl}/search?key={$this->_apiKey}&part=snippet&maxResults={$this->_MAX_RESULTS}";
@@ -46,7 +34,6 @@ class YoutubeRepository implements YoutubeRepositoryInterface
         if ($response['success'] && !isset($response['data']['error'])) {
             return $response;
         }
-
         return [
                 'success' => false,
                 'data' => null,
