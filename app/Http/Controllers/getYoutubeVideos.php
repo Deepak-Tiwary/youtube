@@ -15,6 +15,21 @@ class getYoutubeVideos extends Controller
 		$json = file_get_contents($base_url);
 		return response()->json($json);
 	}
+    
+    
+      public function getYoutubeByClass(Request $request)
+      {
+        $key = 'AIzaSyA54gNx4uQjjkoDQrS7sKX7vyyN9nVHUNc';
+        $cls = new Google_Client();
+        $cls->setDeveloperKey($KEY);
+        $youtube = new Google_Service_YouTube($cls);
+           $results = $youtube->search->listSearch('id', array(
+                 'q' => $request->search,
+                  'maxResults' => $request->max
+                ));
+            return view('resultado', compact('results'));
+       }
+    
 	
 	public function sanitize_string($string) 
 	{
