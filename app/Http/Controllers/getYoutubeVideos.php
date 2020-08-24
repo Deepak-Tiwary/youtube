@@ -1,8 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+namespace App\Http\Controllers;
+use HTTP;
+use App;
+use Google_Client;
+use Google_Service_YouTube;
+
+
+
 
 class getYoutubeVideos extends Controller
 {
